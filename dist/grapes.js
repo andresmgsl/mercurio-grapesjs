@@ -21756,6 +21756,7 @@ module.exports = Backbone.View.extend({
 
     if (config.autoAdd && target) {
       target.add(json.data, { at: 0 });
+      console.log(target.getAll(),json.data);
     }
 
     this.onUploadEnd(text);
@@ -21778,7 +21779,7 @@ module.exports = Backbone.View.extend({
     var params = config.params;
 
     for (var i = 0; i < files.length; i++) {
-      body.append(config.uploadName + '[]', files[i]);
+      body.append(config.uploadName , files[i]);
     }
 
     for (var param in params) {
@@ -21793,7 +21794,6 @@ module.exports = Backbone.View.extend({
     if (typeof headers[reqHead] == 'undefined') {
       headers[reqHead] = 'XMLHttpRequest';
     }
-
     if (url) {
       this.onUploadStart();
       return (0, _fetch2.default)(url, {
@@ -21806,6 +21806,7 @@ module.exports = Backbone.View.extend({
           return Promise.reject(text);
         });
       }).then(function (text) {
+        console.log(text);
         return _this.onUploadResponse(text, clb);
       }).catch(function (err) {
         return _this.onUploadError(err);
