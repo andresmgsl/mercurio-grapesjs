@@ -21756,7 +21756,7 @@ module.exports = Backbone.View.extend({
 
     if (config.autoAdd && target) {
       target.add(json.data, { at: 0 });
-      console.log(target.getAll(),json.data);
+    
     }
 
     this.onUploadEnd(text);
